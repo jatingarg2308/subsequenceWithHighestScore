@@ -1,14 +1,14 @@
-file=open('temp.txt', 'r')
+
+file=open("temp.txt", 'r')
 string=file.read()
-
-checklength=3000
-substring=string[:checklength]
-
-frequencyInString={}
+file.close()
+locationInString={}
 
 for i in range(len(string)):
-    if string[i] not in frequencyInString:
-        frequencyInString[string[i]]=0
-    frequencyInString[string[i]]+=1
+    if string[i] not in locationInString:
+        locationInString[string[i]]=[]
+    locationInString[string[i]].append(i)
 
-print(frequencyInString)
+file=open('test.json', 'w')
+file.write(str(locationInString))
+file.close()
