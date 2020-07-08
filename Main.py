@@ -5,7 +5,7 @@ lookup={}
 max_value=0
 max_string=""
 count=0
-while count<max_subsequence_size*1:
+while count<max_subsequence_size*30:
     arr=Calculation.calculate(count, max_subsequence_size)
     for key in arr:
         if key in lookup:
