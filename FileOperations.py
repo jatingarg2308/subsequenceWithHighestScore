@@ -1,7 +1,7 @@
 def gettingString(From, To):
     file = open("temp.txt", "r")
     file.seek(From)
-    string = file.read(To)
+    string = file.read(To-From)
     return string
 
 

@@ -2,7 +2,7 @@ import FileOperations
 import HashingOfSubString
 
 
-def calculate(count, max_subsequence_size):
+def calculate1(count, max_subsequence_size):
     string=FileOperations.gettingString(count, count+2*max_subsequence_size)
     locationInString=FileOperations.createHashingOfString(count, count+2*max_subsequence_size)
     masterLookupSubstring={}
@@ -26,4 +26,29 @@ def calculate(count, max_subsequence_size):
 
     return masterLookupSubstring
 
+def calculate2(length, max_subsequence_size, number_of_char_in_file):
+    print("Working on Length: " + str(length))
+    string=""
+    lookupSubString = HashingOfSubString.creatingHashing(length, max_subsequence_size)
+    for count in range(0, number_of_char_in_file-max_subsequence_size+1, max_subsequence_size):
+        string =FileOperations.gettingString(count, count+2*max_subsequence_size)
+        locationInString = FileOperations.createHashingOfString(count, count + 2 * max_subsequence_size)
 
+        # print("Finding the Substring that match the above hashes key created")
+
+        for key in lookupSubString:
+            if key[0] in locationInString:
+                locations=locationInString[key[0]]
+                for index in range(len(locations)-1, -1, -1):
+                    if count == 0 and locations[index]<=max_subsequence_size:
+                        if string[locations[index]: locations[index] + length] in lookupSubString:
+                            lookupSubString[string[locations[index]: locations[index] + length]] += 1
+
+                    if count>0 and locations[index]+length>max_subsequence_size:
+                        if string[locations[index]: locations[index] + length] in lookupSubString:
+                            lookupSubString[string[locations[index]: locations[index] + length]] += 1
+                    if count>0 and locations[index]+length<=max_subsequence_size:
+                        break
+
+
+    return lookupSubString
