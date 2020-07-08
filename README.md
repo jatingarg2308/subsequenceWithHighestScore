@@ -9,3 +9,6 @@
 If the size of the file is changed then:
 1. Find the number of characters possible in that file
 3. Change the while loop condition in Calculation.py to the solution you got in above 2 steps
+
+# Change the Subsequence Length
+In Calculation.py change the variable max_subsequence_size to the desired value
