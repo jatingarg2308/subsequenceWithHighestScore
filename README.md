@@ -12,3 +12,6 @@ If the size of the file is changed then:
 
 # Change the Subsequence Length
 In Calculation.py change the variable max_subsequence_size to the desired value
+
+# Add the number of Charaacters in the file
+In the variable number_of_char_in_file set the number of characters in the file
