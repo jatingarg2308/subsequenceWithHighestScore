@@ -1,22 +1,26 @@
 import Calculation
 
+max_subsequence_size=500
 lookup={}
 max_value=0
+max_string=""
 count=0
-while count<3000*4:
-    arr=Calculation.calculate(3000)[1]
-    for key in arr[0]:
+while count<max_subsequence_size*1:
+    arr=Calculation.calculate(count, max_subsequence_size)
+    for key in arr:
         if key in lookup:
-            lookup[key]+=arr[0][key]
+            lookup[key]+=arr[key]
         else:
             lookup[key]=arr[key]
 
-    count+=3000
+    count+=max_subsequence_size
 for key in lookup:
     if lookup[key]>1:
         if pow(len(key), 2) * pow(lookup[key] - 1, 0.33) > max_value:
             max_value = pow(len(key), 2) * pow(lookup[key] - 1, 0.33)
-print(max_value)
+            max_string=key
 
+print(max_value)
+print(max_string)
 
 
