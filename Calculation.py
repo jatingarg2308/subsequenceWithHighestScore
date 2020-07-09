@@ -52,3 +52,25 @@ def calculate2(length, max_subsequence_size, number_of_char_in_file):
 
 
     return lookupSubString
+
+def frequencyCalculation(lookupString, number_of_char_in_file):
+    frequency=0
+    length=len(lookupString)
+    for count in range(0, number_of_char_in_file-2*length, length):
+        string=FileOperations.gettingString(count, count+2*length)
+        locationInString=FileOperations.createHashingOfString(count, count+2*length)
+
+        if lookupString[0] in locationInString:
+            locations = locationInString[lookupString[0]]
+            for index in range(len(locations) - 1, -1, -1):
+                if count == 0 and locations[index] <= length:
+                    if string[locations[index]: locations[index] + length]== lookupString:
+                        frequency += 1
+
+                if count > 0 and locations[index] + length > length:
+                    if string[locations[index]: locations[index] + length]== lookupString:
+                        frequency += 1
+                if count > 0 and locations[index] + length <= length:
+                    break
+
+    return frequency

@@ -1,3 +1,5 @@
+
+
 def gettingString(From, To):
     file = open("temp.txt", "r")
     file.seek(From)
@@ -13,3 +15,4 @@ def createHashingOfString(From, To):
             lookup[string[i]] = []
         lookup[string[i]].append(i)
     return lookup
+
