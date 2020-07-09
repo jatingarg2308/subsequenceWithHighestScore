@@ -74,3 +74,7 @@ def frequencyCalculation(lookupString, number_of_char_in_file):
                     break
 
     return frequency
+
+def getFrequencies(json, number_of_char_in_file):
+    for key in json:
+        json[key]=frequencyCalculation(key, number_of_char_in_file)
